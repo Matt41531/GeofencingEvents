@@ -2,34 +2,36 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {Card} from 'react-native-elements';
 import GeolocationExample from './Geolocation';
+import data from './Event.json';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      name: "Matthew",
-      newInside: []
-    }
   }
 
   eventAlert = (insideOrNah) => {
       if (insideOrNah)
       {
+
+
         return <Card containerStyle={{padding: 0}}>
         <View style={{backgroundColor: '#b2b2ff', padding: 10, alignItems: 'center'}}>
-          <Text style={{color: 'white'}}> Full width header </Text>
+          <Text style={{color: 'white'}}> {data.name} </Text>
         </View>
         <Text>
-        Puppy Adoption Day {"\n"}
-        Time: {"\n"}
-        Date: {"\n"}   
+        Time: {data.time} {"\n"}
+        Date: {data.date} {"\n"}   
+        Address: {data.address}
         </Text>
       </Card>
+
+     
       }
+
       else 
       {
-        return <Text> Hello </Text>
+        return <Text> No Events Nearby </Text>
       }
   }
 
@@ -47,6 +49,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 });
